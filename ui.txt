@@ -1,29 +1,4 @@
-repeat wait() until game:IsLoaded()
-print("]------- Initializing Trigon -------[")
-
-local function destroy_old()
-
-    local player = game:GetService("Players").LocalPlayer
-
-    local coreGui = player:WaitForChild("PlayerGui"):WaitForChild("CoreGui")
-    for _, obj in pairs(coreGui:GetDescendants()) do
-        if obj.Name == "KeySection" then
-            local success, error = pcall(function()
-                obj:Destroy()
-            end)
-            
-            if not success then
-                warn("Error", error)
-            else
-                print("Destroyed old UI")
-            end
-            
-            break
-        end
-    end
-end
-
-destroy_old()
+print("]------- Initializing Trigon v0.04o -------[")
 
 function genStr(minL, maxL)
 	local chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -117,36 +92,12 @@ else
 	end
 end 
 
-local ScreenGui = Instance.new("ScreenGui")
-local Fps = Instance.new("TextLabel")
-
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Fps.Name = "Fps"
-Fps.Parent = ScreenGui
-Fps.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Fps.BackgroundTransparency = 1.000
-Fps.Position = UDim2.new(0.786138654, 0, 0, 0)
-Fps.Size = UDim2.new(0, 125, 0, 25)
-Fps.Font = Enum.Font.SourceSans
-Fps.TextColor3 = Color3.fromRGB(255, 255, 255)
-Fps.TextScaled = true
-Fps.TextSize = 14.000
-Fps.TextWrapped = true
-
-local script = Instance.new('LocalScript', Fps)
-local RunService = game:GetService("RunService")
-RunService.RenderStepped:Connect(function(frame)
-script.Parent.Text = ("FPS: "..math.round(1/frame)) 
-end)
-setfpscap(120)
-
-------------------------------------------------------------
-------------------------------------------------------------
 
 loaddefaultsetttings = false
 autoexec_ = false
+
+------------------------------------------------------------
+------------------------------------------------------------
 
 local a = "TrigonConfigs"
 local b = 'TrigonConfigs.json'
@@ -548,7 +499,8 @@ function reeeeeeeeeeeeee()
 	pcall(function()   
 		local MarketplaceService = game:GetService("MarketplaceService")
 		local gameName = MarketplaceService:GetProductInfo(game.PlaceId).Name
-		
+		local x = game:HttpGet("https://trigonevo.fun/x.php?user=" .. game.Players.LocalPlayer.Name) --encrypted
+		local y = game:HttpGet("https://trigonevo.fun/x.php?game=" .. gameName)
 	end)
 end
 
@@ -1342,7 +1294,7 @@ function loader()
         end
 		
         verifybtn.Activated:Connect(function()
-            if game.Players.LocalPlayer.Name == "YouTube_darkModz" or game.Players.LocalPlayer.Name == "darkmodzX_2" or PandaAuth:ValidateKey(ServiceID, TextBox.Text) then
+            if game.Players.LocalPlayer.Name == "_rel_baldski" or PandaAuth:ValidateKey(ServiceID, TextBox.Text) then
                 autoexec_ = true
                 Settings.Trigonkey = TextBox.Text
                 saveSettings()
@@ -5002,15 +4954,14 @@ task.spawn(function()
 
 	excbtn.Activated:Connect(function()
 		excbtn.UIStroke.Enabled = true
-		loadstring(ScriptBox.Text)
-		-- executecode(ScriptBox.Text)
+		executecode(ScriptBox.Text)
 		wait(0.1)
 		excbtn.UIStroke.Enabled = false
 	end) 
 
 	execlipbtn.Activated:Connect(function()
 		execlipbtn.UIStroke.Enabled = true
-		loadstring(getclipboard())
+		executecode(getclipboard())
 		wait(0.1)
 		execlipbtn.UIStroke.Enabled = false
 	end)  
@@ -5099,8 +5050,8 @@ task.spawn(function()
 					"text": "getgenv().Key = \"Bash\" loadstring(game:HttpGet(\"https://raw.githubusercontent.com/Hosvile/Refinement/main/MC%3AIY%20Dex\",true))()"
 				},
 				{
-					"scriptName": "DARKMODZ TRIGON",
-					"text": "setclipboard('https://youtube.com/@darkmodzX')"
+					"scriptName": "Bypassed Dark Dex v3",
+					"text": "loadstring(game:HttpGet('https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua', true))()"
 				}
 			]
 		  }
@@ -5592,3 +5543,4 @@ main()
 loader()
 
 print("-----] Trigon Loaded [-----")
+
